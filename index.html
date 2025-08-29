@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>श्रम विभाजन और जाति प्रथा - वस्तुनिष्ठ प्रश्न टेस्ट</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            color: #333;
+            margin: 0;
+            padding: 0; /* Remove padding from body as ads will be outside container */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        .ad-banner {
+            width: 100%;
+            max-width: 900px; /* Slightly wider than container for distinction */
+            background-color: #e0e0e0;
+            border: 1px solid #ccc;
+            text-align: center;
+            padding: 15px 0;
+            margin-bottom: 20px; /* Space between ad and content */
+            font-size: 0.9em;
+            color: #555;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 50px;
+        }
+        .ad-banner.bottom {
+            margin-top: 20px; /* Space between content and ad */
+            margin-bottom: 0;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            max-width: 700px;
+            width: 100%;
+            /* margin-bottom: 20px; Removed here, handled by ad-banner */
+        }
+        h1, h2 {
+            color: #2c3e50;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .chapter-title {
+            color: #007bff; /* Chapter name in blue color */
+        }
+        .name-section {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .name-section label {
+            font-size: 1.1em;
+            margin-right: 10px;
+        }
+        .name-section input[type="text"] {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1em;
+            width: 60%;
+            max-width: 250px;
+        }
+        .name-section button {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-left: 10px;
+            transition: background-color 0.2s ease;
+        }
+        .name-section button:hover {
+            background-color: #218838;
+        }
+        .question-block {
+            margin-bottom: 25px;
+            padding-bottom: 20px;
+        }
+        .question-block p {
+            font-size: 1.15em;
+            margin-bottom: 15px;
+            font-weight: bold;
+            color: #34495e;
+        }
+        .options label {
+            display: block;
+            margin-bottom: 10px;
+            padding: 10px 15px;
+            background-color: #ecf0f1;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+            position: relative;
+            padding-left: 35px; /* Space for custom radio button */
+        }
+        .options label:hover:not(.correct-answer):not(.wrong-selected) {
+            background-color: #dfe6e9;
+        }
+        .options input[type="radio"] {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+        /* Custom radio button styling */
+        .options label::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 20px;
+            height: 20px;
+            border: 2px solid #3498db;
+            border-radius: 50%;
+            background-color: white;
+            box-sizing: border-box;
+        }
+        .options input[type="radio"]:checked + label::before {
+            background-color: #3498db;
+            border-color: #3498db;
+        }
+        .options input[type="radio"]:checked + label::after {
+            content: '';
+            position: absolute;
+            left: 16px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background-color: white;
+            border-radius: 50%;
+        }
+
+        /* Feedback styling */
+        .correct-answer {
+            background-color: #d4edda !important; /* Light green */
+            border: 1px solid #28a745;
+        }
+        .wrong-selected {
+            background-color: #f8d7da !important; /* Light red */
+            border: 1px solid #dc3545;
+        }
+        .feedback-correct { /* For highlighting the correct answer when a wrong one was chosen */
+            background-color: #d4edda !important;
+            border: 1px solid #28a745;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        .navigation-buttons button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.2s ease;
+            flex-grow: 1; /* Make buttons take equal space */
+            margin: 0 5px; /* Add some margin between buttons */
+        }
+        .navigation-buttons button:hover {
+            background-color: #0056b3;
+        }
+        .navigation-buttons button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        
+        .results {
+            margin-top: 30px;
+            padding: 20px;
+            border: 2px solid #007bff;
+            border-radius: 8px;
+            background-color: #e9f5ff;
+            text-align: center;
+            font-size: 1.2em;
+        }
+        .results p {
+            margin: 10px 0;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Top Ad Banner -->
+    <div class="ad-banner">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '4b505c9273cf9161c278efee028f35e2',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/4b505c9273cf9161c278efee028f35e2/invoke.js"></script>
+    </div>
+
+    <div class="container">
+        <h1><span class="chapter-title">श्रम विभाजन और जाति प्रथा</span><br>वस्तुनिष्ठ प्रश्न टेस्ट</h1>
+
+        <div id="name-input-section" class="name-section">
+            <label for="student-name">कृपया अपना नाम दर्ज करें:</label>
+            <input type="text" id="student-name" placeholder="आपका नाम">
+            <button onclick="startQuiz()">टेस्ट शुरू करें</button>
+        </div>
+
+        <div id="quiz-container" class="hidden">
+            <div id="current-question-display">
+                <!-- Current question will be loaded here by JavaScript -->
+            </div>
+            <div class="navigation-buttons">
+                <button id="prev-btn" onclick="prevQuestion()" disabled>पिछला प्रश्न</button>
+                <button id="next-btn" onclick="handleNextButton()">अगला प्रश्न</button>
+            </div>
+        </div>
+
+        <div id="results-section" class="results hidden">
+            <!-- Results will be displayed here -->
+        </div>
+    </div>
+
+    <!-- Bottom Ad Banner -->
+    <div class="ad-banner bottom">
+        <script type="text/javascript">
+            atOptions = {
+                'key' : '4b505c9273cf9161c278efee028f35e2',
+                'format' : 'iframe',
+                'height' : 50,
+                'width' : 320,
+                'params' : {}
+            };
+        </script>
+        <script type="text/javascript" src="//www.highperformanceformat.com/4b505c9273cf9161c278efee028f35e2/invoke.js"></script>
+    </div>
+
+    <script>
+        const questions = [
+            {
+                question: "1. 'श्रम विभाजन और जाति प्रथा' पाठ के लेखक कौन हैं?",
+                options: ["महात्मा गांधी", "भीमराव अंबेडकर", "जवाहरलाल नेहरू", "राम मनोहर लोहिया"],
+                answer: "भीमराव अंबेडकर"
+            },
+            {
+                question: "2. डॉ. भीमराव अंबेडकर का जन्म कब हुआ था?",
+                options: ["14 अप्रैल, 1891 ई.", "14 मई, 1891 ई.", "14 जून, 1891 ई.", "14 जुलाई, 1891 ई."],
+                answer: "14 अप्रैल, 1891 ई."
+            },
+            {
+                question: "3. डॉ. भीमराव अंबेडकर का जन्म कहाँ हुआ था?",
+                options: ["गोरखपुर, उत्तर प्रदेश", "महु, मध्य प्रदेश", "डुमराँव, बिहार", "वाराणसी, उत्तर प्रदेश"],
+                answer: "महु, मध्य प्रदेश"
+            },
+            {
+                question: "4. डॉ. अंबेडकर के माता का नाम क्या था?",
+                options: ["रमाबाई", "भीमाबाई", "सुशीलाबाई", "मीराबाई"],
+                answer: "भीमाबाई"
+            },
+            {
+                question: "5. डॉ. अंबेडकर के पिता का नाम क्या था?",
+                options: ["रामजी सकपाल", "कृष्णराव सकपाल", "विनायक सकपाल", "दशरथ सकपाल"],
+                answer: "रामजी सकपाल"
+            },
+            {
+                question: "6. आधुनिक सभ्य समाज 'श्रम-विभाजन' को आवश्यक क्यों मानता है?",
+                options: ["कार्यकुशलता के लिए", "भाईचारा के लिए", "रूढ़िवादिता के लिए", "जाति प्रथा को बनाए रखने के लिए"],
+                answer: "कार्यकुशलता के लिए"
+            },
+            {
+                question: "7. 'श्रम विभाजन और जाति प्रथा' पाठ साहित्य की कौन सी विधा है?",
+                options: ["कहानी", "निबंध", "कविता", "रेखाचित्र"],
+                answer: "निबंध" // (यह मूलतः एक भाषण है, जिसका हिंदी रूपांतरण निबंध के रूप में प्रस्तुत है।)
+            },
+            {
+                question: "8. भारतीय संविधान के निर्माण में महत्वपूर्ण भूमिका किसकी है?",
+                options: ["महात्मा गांधी", "ज्योतिबा फुले", "भीमराव अंबेडकर", "राजेंद्र प्रसाद"],
+                answer: "भीमराव अंबेडकर"
+            },
+            {
+                question: "9. डॉ. अंबेडकर ने किस पत्रिका का संपादन किया?",
+                options: ["बहिष्कृत भारत", "हुंकार", "प्रभात", "लोककथा"],
+                answer: "बहिष्कृत भारत"
+            },
+            {
+                question: "10. डॉ. अंबेडकर का निधन कब हुआ?",
+                options: ["1956 ई.", "1957 ई.", "1958 ई.", "1959 ई."],
+                answer: "1956 ई."
+            },
+            {
+                question: "11. डॉ. अंबेडकर का निधन कहाँ हुआ?",
+                options: ["मुंबई", "चेन्नई", "दिल्ली", "कोलकाता"],
+                answer: "दिल्ली"
+            },
+            {
+                question: "12. 'द कास्ट्स इन इंडिया: देयर मेकैनिज्म' किनकी रचना है?",
+                options: ["महात्मा गांधी", "डॉ. भीमराव अंबेडकर", "ज्योतिबा फुले", "राजेंद्र प्रसाद"],
+                answer: "डॉ. भीमराव अंबेडकर"
+            },
+            {
+                question: "13. लेखक के अनुसार, 'आदर्श समाज' किस पर आधारित होना चाहिए?",
+                options: ["स्वतंत्रता पर", "समता पर", "भ्रातृत्व पर", "उपर्युक्त सभी पर"],
+                answer: "उपर्युक्त सभी पर"
+            },
+            {
+                question: "14. लेखक भारत में 'जाति प्रथा' के सबसे प्रमुख और प्रत्यक्ष कारण के रूप में किसे मानते हैं?",
+                options: ["बेरोजगारी", "गरीबी", "अशिक्षा", "अज्ञानता"],
+                answer: "बेरोजगारी"
+            },
+            {
+                question: "15. डॉ. अंबेडकर के अनुसार, आधुनिक युग में 'श्रम विभाजन' का आधार क्या नहीं होना चाहिए?",
+                options: ["कार्यकुशलता", "व्यक्तिगत रुचि", "जाति प्रथा", "शारीरिक क्षमता"],
+                answer: "जाति प्रथा"
+            },
+            {
+                question: "16. डॉ. अंबेडकर के चिंतन एवं रचनात्मकता के मुख्य कितने प्रेरक व्यक्ति थे?",
+                options: ["दो", "तीन", "चार", "पाँच"],
+                answer: "तीन" // (बुद्ध, कबीर, ज्योतिबा फुले)
+            },
+            {
+                question: "17. 'एनीहिलेशन ऑफ कास्ट' का हिंदी रूपांतरण किसने किया?",
+                options: ["ललई सिंह यादव", "मोहनलाल", "किशोरलाल", "रामकुमार"],
+                answer: "ललई सिंह यादव"
+            },
+            {
+                question: "18. प्राथमिक शिक्षा प्राप्त करने के बाद अंबेडकर उच्चतर शिक्षा के लिए कहाँ गए?",
+                options: ["इटली", "दक्षिण अफ्रीका", "न्यूयॉर्क (अमेरिका)", "लंदन (इंग्लैंड)"],
+                answer: "न्यूयॉर्क (अमेरिका)"
+            },
+            {
+                question: "19. 'बहिष्कृत भारत' नामक पत्रिका का संपादन किसने किया?",
+                options: ["राजेंद्र प्रसाद", "भीमराव अंबेडकर", "महात्मा गांधी", "ज्योतिबा फुले"],
+                answer: "भीमराव अंबेडकर"
+            },
+            {
+                question: "20. लेखक के अनुसार, जाति प्रथा को हानिकारक क्यों माना गया है?",
+                options: ["यह रूढ़िवादी सोच को बढ़ावा देती है।", "यह मनुष्य के जन्म से ही उसका पेशा निर्धारित कर देती है।", "यह सामाजिक असमानता पैदा करती है।", "उपर्युक्त सभी।"],
+                answer: "उपर्युक्त सभी।"
+            },
+            {
+                question: "21. डॉ. अंबेडकर के अनुसार, लोकतंत्र के लिए क्या आवश्यक है?",
+                options: ["लोगों के बीच परस्पर सम्मान और समानता का भाव", "जातिगत भेद मिटाना", "स्वतंत्रता और बंधुत्व", "उपर्युक्त सभी"],
+                answer: "उपर्युक्त सभी"
+            },
+            {
+                question: "22. डॉ. अंबेडकर का संपूर्ण वाङ्मय नाम से कितने खंडों में प्रकाशित हो चुका है?",
+                options: ["18 खंडों में", "19 खंडों में", "20 खंडों में", "21 खंडों में"],
+                answer: "21 खंडों में"
+            },
+            {
+                question: "23. यह विडंबना की ही बात है कि इस युग में भी जातिवाद के पोषकों की कमी नहीं है। यह किस पाठ की पंक्ति है?",
+                options: ["विष के दाँत", "श्रम विभाजन और जाति प्रथा", "नागरी लिपि", "भारत से हम क्या सीखें"],
+                answer: "श्रम विभाजन और जाति प्रथा"
+            },
+            {
+                question: "24. जाति प्रथा मनुष्य के पेशे को किस प्रकार निर्धारित करती है?",
+                options: ["मनुष्य की रुचि के आधार पर", "मनुष्य की क्षमता के आधार पर", "मनुष्य के जन्म के आधार पर", "मनुष्य की शिक्षा के आधार पर"],
+                answer: "मनुष्य के जन्म के आधार पर"
+            },
+            {
+                question: "25. डॉ. अंबेडकर ने किस वर्ग के लोगों के उत्थान के लिए अथक प्रयास किए?",
+                options: ["उच्च वर्ग", "मध्यम वर्ग", "दलित वर्ग", "व्यापारी वर्ग"],
+                answer: "दलित वर्ग"
+            },
+            {
+                question: "26. 'श्रम विभाजन और जाति प्रथा' पाठ अंबेडकर के किस भाषण का अंश है?",
+                options: ["द कास्ट्स इन इंडिया", "एनीहिलेशन ऑफ कास्ट", "हू आर शूद्राज़", "जेनेसिस एंड डेवलपमेंट"],
+                answer: "एनीहिलेशन ऑफ कास्ट"
+            },
+            {
+                question: "27. भारतीय समाज में बेरोजगारी का प्रमुख और प्रत्यक्ष कारण क्या है?",
+                options: ["अशिक्षा", "जाति प्रथा", "गरीबी", "भ्रष्टाचार"],
+                answer: "जाति प्रथा"
+            },
+            {
+                question: "28. जाति प्रथा किस प्रकार का दोषपूर्ण निर्धारण करती है?",
+                options: ["स्वाभाविक", "अस्वाभाविक", "नैतिक", "सामाजिक"],
+                answer: "अस्वाभाविक"
+            },
+            {
+                question: "29. आर्थिक पहलू से भी जाति प्रथा है:",
+                options: ["लाभदायक", "हानिकारक", "सुविधाजनक", "उपर्युक्त सभी"],
+                answer: "हानिकारक"
+            },
+            {
+                question: "30. जाति प्रथा का दूषित सिद्धांत क्या है?",
+                options: ["श्रमिक-विभाजन का अभाव", "श्रम विभाजन का स्वाभाविक होना", "मनुष्य के जन्म के आधार पर पेशा तय करना", "योग्यता के आधार पर पेशा तय करना"],
+                answer: "मनुष्य के जन्म के आधार पर पेशा तय करना"
+            },
+            {
+                question: "31. लोकतंत्र मूलतः सामूहिक जीवनचर्या की एक रीति तथा समाज के सम्मिलित अनुभवों के आदान-प्रदान का नाम है। यह किसका कथन है?",
+                options: ["महात्मा गांधी", "भीमराव अंबेडकर", "जवाहरलाल नेहरू", "राजेंद्र प्रसाद"],
+                answer: "भीमराव अंबेडकर"
+            },
+            {
+                question: "32. लेखक के अनुसार, 'भाईचारे' का वास्तविक रूप कैसा होना चाहिए?",
+                options: ["दूध-पानी के मिश्रण जैसा", "चीनी-पानी के मिश्रण जैसा", "नमक-पानी के मिश्रण जैसा", "तेल-पानी के मिश्रण जैसा"],
+                answer: "दूध-पानी के मिश्रण जैसा"
+            },
+            {
+                question: "33. डॉ. अंबेडकर का विख्यात भाषण 'एनीहिलेशन ऑफ कास्ट' का हिंदी रूपांतरण किसने किया?",
+                options: ["डॉ. राजेंद्र प्रसाद", "ललई सिंह यादव", "रामविलास शर्मा", "नलिन विलोचन शर्मा"],
+                answer: "ललई सिंह यादव"
+            },
+            {
+                question: "34. जाति प्रथा को श्रम विभाजन का स्वाभाविक रूप क्यों नहीं माना जा सकता?",
+                options: ["यह मनुष्य की रुचि पर आधारित नहीं है।", "यह मनुष्य के जन्म पर आधारित है।", "यह मनुष्य की कार्यकुशलता को अनदेखा करती है।", "उपर्युक्त सभी।"],
+                answer: "उपर्युक्त सभी।"
+            },
+            {
+                question: "35. पेशा बदलने की अनुमति न देना, जाति प्रथा का कौन सा दोष है?",
+                options: ["अमानवीय", "आर्थिक", "सामाजिक", "सांस्कृतिक"],
+                answer: "अमानवीय"
+            },
+            {
+                question: "36. 'द बुद्ध एंड हिज धम्म' के लेखक कौन हैं?",
+                options: ["महात्मा गांधी", "डॉ. भीमराव अंबेडकर", "जवाहरलाल नेहरू", "ज्योतिबा फुले"],
+                answer: "डॉ. भीमराव अंबेडकर"
+            },
+            {
+                question: "37. लेखक को किस बात की विडंबना लगती है?",
+                options: ["आधुनिक समाज में शिक्षा का अभाव", "जातिवाद के पोषकों की कमी न होना", "लोकतंत्र का कमजोर होना", "लोगों में भाईचारे का अभाव"],
+                answer: "जातिवाद के पोषकों की कमी न होना"
+            },
+            {
+                question: "38. जाति प्रथा किस बात के लिए अनुमति नहीं देती?",
+                options: ["शिक्षा प्राप्त करने की", "पेशा बदलने की", "नात्रा करने की", "विवाह करने की"],
+                answer: "पेशा बदलने की"
+            },
+            {
+                question: "39. डॉ. अंबेडकर ने किस वर्ष बौद्ध धर्म ग्रहण किया था?",
+                options: ["1955", "1956", "1957", "1958"],
+                answer: "1956"
+            },
+            {
+                question: "40. इस पाठ में 'स्वतंत्रता', 'समता' और 'भ्रातृत्व' के आदर्शों की बात की गई है, जो प्रेरित हैं:",
+                options: ["अमेरिकी क्रांति से", "फ्रांसीसी क्रांति से", "रूसी क्रांति से", "भारतीय स्वतंत्रता संग्राम से"],
+                answer: "फ्रांसीसी क्रांति से"
+            },
+            {
+                question: "41. जाति प्रथा का दूषित प्रभाव किस पर पड़ता है?",
+                options: ["कार्यकुशलता पर", "सामाजिक सौहार्द पर", "आर्थिक प्रगति पर", "उपर्युक्त सभी पर"],
+                answer: "उपर्युक्त सभी पर"
+            },
+            {
+                question: "42. जाति प्रथा मनुष्य को जीवन भर के लिए किस में बाँध देती है?",
+                options: ["एक पेशे में", "एक धर्म में", "एक परिवार में", "एक शहर में"],
+                answer: "एक पेशे में"
+            },
+            {
+                question: "43. डॉ. अंबेडकर के अनुसार, लोकतंत्र क्या है?",
+                options: ["शासन प्रणाली", "सामाजिक जीवनचर्या की एक रीति", "एक प्रकार का आर्थिक मॉडल", "केवल राजनीतिक व्यवस्था"],
+                answer: "सामाजिक जीवनचर्या की एक रीति"
+            },
+            {
+                question: "44. लेखक ने 'विषमता' के किस रूप को स्वीकार किया है?",
+                options: ["सामाजिक विषमता", "आर्थिक विषमता", "शारीरिक क्षमता की विषमता", "जातिगत विषमता"],
+                answer: "शारीरिक क्षमता की विषमता"
+            },
+            {
+                question: "45. डॉ. अंबेडकर की माता भीमाबाई किस वर्ग से थीं?",
+                options: ["ब्राह्मण", "क्षत्रिय", "महार", "वैश्य"],
+                answer: "महार"
+            },
+            {
+                question: "46. 'जाति-भेद का उच्छेद' नामक पुस्तक का हिंदी रूपांतरण किसने किया?",
+                options: ["रामविलास शर्मा", "नलिन विलोचन शर्मा", "ललई सिंह यादव", "यतींद्र मिश्र"],
+                answer: "ललई सिंह यादव"
+            },
+            {
+                question: "47. लेखक को किस बात की चिंता सताती है कि भारत में ऐसा हो रहा है?",
+                options: ["गरीबी बढ़ रही है", "बेरोजगारी बढ़ रही है", "जाति प्रथा का पोषण हो रहा है", "अशिक्षा फैल रही है"],
+                answer: "जाति प्रथा का पोषण हो रहा है"
+            },
+            {
+                question: "48. 'श्रम विभाजन' का दूसरा नाम क्या है?",
+                options: ["जाति विभाजन", "व्यवसाय विभाजन", "वर्ण व्यवस्था", "उपर्युक्त सभी"],
+                answer: "जाति विभाजन" // (लेखक के तर्क के अनुसार)
+            },
+            {
+                question: "49. डॉ. अंबेडकर का मुख्य उद्देश्य क्या था?",
+                options: ["स्वतंत्रता दिलाना", "समानता स्थापित करना", "जाति प्रथा का उन्मूलन", "दलितों को अधिकार दिलाना"],
+                answer: "जाति प्रथा का उन्मूलन"
+            },
+            {
+                question: "50. आधुनिक समाज किस बात पर आधारित होना चाहिए?",
+                options: ["धर्म पर", "जाति पर", "श्रम विभाजन पर (मनुष्य की रुचि के अनुसार)", "वर्ण व्यवस्था पर"],
+                answer: "श्रम विभाजन पर (मनुष्य की रुचि के अनुसार)"
+            }
+        ];
+
+        let studentName = "";
+        let currentQuestionIndex = 0;
+        // Stores { selected: "option", isCorrect: true/false } for answered questions, or null for unanswered
+        let userResponses = Array(questions.length).fill(null);
+
+        const nameInputSection = document.getElementById('name-input-section');
+        const quizContainer = document.getElementById('quiz-container');
+        const currentQuestionDisplay = document.getElementById('current-question-display');
+        const prevBtn = document.getElementById('prev-btn');
+        const nextBtn = document.getElementById('next-btn');
+        const resultsSection = document.getElementById('results-section');
+
+        function startQuiz() {
+            studentName = document.getElementById('student-name').value.trim();
+            if (studentName === "") {
+                alert("कृपया अपना नाम दर्ज करें।");
+                return;
+            }
+            nameInputSection.classList.add('hidden');
+            quizContainer.classList.remove('hidden');
+            loadQuestion(currentQuestionIndex);
+        }
+
+        function loadQuestion(index) {
+            currentQuestionDisplay.innerHTML = ''; // Clear previous question
+            const q = questions[index];
+            let questionHTML = `
+                <div class="question-block" id="question-${index}">
+                    <p>${q.question}</p>
+                    <div class="options">
+            `;
+            q.options.forEach((option, optionIndex) => {
+                const uniqueId = `q${index}-option${optionIndex}`;
+                questionHTML += `
+                        <input type="radio" id="${uniqueId}" name="question-${index}" value="${option}" onchange="selectAnswer(${index}, '${option}')">
+                        <label for="${uniqueId}">${option}</label>
+                `;
+            });
+            questionHTML += `
+                    </div>
+                </div>
+            `;
+            currentQuestionDisplay.innerHTML = questionHTML;
+
+            // Update navigation button states
+            prevBtn.disabled = (currentQuestionIndex === 0);
+            // The nextBtn will always be enabled and its text remains "अगला प्रश्न"
+            // The logic for submitting on the last question is in handleNextButton()
+
+            // If question was already answered, show feedback and disable radios
+            if (userResponses[index] !== null) {
+                // Re-select the option the user chose previously
+                const previouslySelectedRadio = document.querySelector(`input[name="question-${index}"][value="${userResponses[index].selected}"]`);
+                if (previouslySelectedRadio) {
+                    previouslySelectedRadio.checked = true;
+                }
+                applyFeedback(index, userResponses[index].selected, q.answer);
+                disableRadios(index);
+            }
+        }
+
+        function selectAnswer(questionIndex, selectedOptionValue) {
+            const correctAnswer = questions[questionIndex].answer;
+            const isCorrect = (selectedOptionValue === correctAnswer);
+            userResponses[questionIndex] = { selected: selectedOptionValue, isCorrect: isCorrect };
+
+            applyFeedback(questionIndex, selectedOptionValue, correctAnswer);
+            disableRadios(questionIndex);
+        }
+
+        function applyFeedback(questionIndex, selectedOptionValue, correctAnswer) {
+            const questionBlock = document.getElementById(`question-${questionIndex}`);
+            const optionsLabels = questionBlock.querySelectorAll('label');
+            
+            optionsLabels.forEach(label => {
+                const labelText = label.innerText.trim();
+                // Remove previous feedback classes (important if navigating back and forth)
+                label.classList.remove('correct-answer', 'wrong-selected', 'feedback-correct');
+
+                if (labelText === correctAnswer) {
+                    label.classList.add('feedback-correct'); // Always highlight correct answer in green
+                }
+                // If the selected option is wrong, mark it red
+                if (labelText === selectedOptionValue && selectedOptionValue !== correctAnswer) {
+                    label.classList.add('wrong-selected');
+                }
+            });
+        }
+
+        function disableRadios(questionIndex) {
+            const questionBlock = document.getElementById(`question-${questionIndex}`);
+            const radioButtons = questionBlock.querySelectorAll(`input[name="question-${questionIndex}"]`);
+            radioButtons.forEach(radio => {
+                radio.disabled = true;
+            });
+        }
+
+        function handleNextButton() {
+            if (currentQuestionIndex === questions.length - 1) {
+                // If it's the last question, submit the quiz
+                submitQuiz();
+            } else {
+                // Otherwise, go to the next question
+                currentQuestionIndex++;
+                loadQuestion(currentQuestionIndex);
+            }
+        }
+
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                loadQuestion(currentQuestionIndex);
+            }
+        }
+
+        function submitQuiz() {
+            let correctCount = 0;
+            let incorrectCount = 0;
+            let unansweredCount = 0;
+
+            userResponses.forEach(response => {
+                if (response !== null) {
+                    if (response.isCorrect) {
+                        correctCount++;
+                    } else {
+                        incorrectCount++;
+                    }
+                } else {
+                    unansweredCount++;
+                }
+            });
+
+            quizContainer.classList.add('hidden');
+            resultsSection.classList.remove('hidden');
+            resultsSection.innerHTML = `
+                <h2>टेस्ट के परिणाम</h2>
+                <p><strong>छात्र का नाम:</strong> ${studentName}</p>
+                <p style="color: #28a745;"><strong>सही उत्तर:</strong> ${correctCount} / ${questions.length}</p>
+                <p style="color: #dc3545;"><strong>गलत उत्तर:</strong> ${incorrectCount} / ${questions.length}</p>
+                <p style="color: #ffc107;"><strong>अनुत्तरित प्रश्न:</strong> ${unansweredCount} / ${questions.length}</p>
+                <button class="navigation-buttons button" onclick="location.reload()" style="background-color: #007bff; margin-top: 20px;">दोबारा टेस्ट दें</button>
+            `;
+        }
+    </script>
+</body>
+</html>
